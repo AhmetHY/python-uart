@@ -1,16 +1,21 @@
-# This is a sample Python script.
+import serial
+import time
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+uartDataSettings = serial.Serial('COM3')
+
+uartDataSettings.baudrate = 115200  # set Baud rate
+uartDataSettings.bytesize = 8   # Number of data bits = 8
+uartDataSettings.parity = 'N'   # No parity
+uartDataSettings.stopbits = 1   # Number of Stop bits = 1
+
+time.sleep(1)   # in Seconds
+
+uartDataSettings.write(b'A')  # Transfer byteArray (8 bit)
+
+uartDataSettings.close()
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
